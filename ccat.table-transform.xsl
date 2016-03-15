@@ -15,7 +15,7 @@
 
 	    <script type="text/javascript">
 	    var feed_url = "<xsl:value-of select="tbody/tr/td[@class='ccat-link']"/>";
-
+//<![CDATA[
 	    var feed_parts = feed_url.split("#");
 	    var tab = "text";
 	    if(typeof feed_parts[1] !== 'undefined' && feed_parts[1] != tab)
@@ -72,7 +72,7 @@
 		$('[data-original-title]').popover('hide');
 	      }
 	    });
-
+//]]>
 	    </script>
 	    <div class="courseContent"></div>
 
