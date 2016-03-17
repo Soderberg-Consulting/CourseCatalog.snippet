@@ -28,7 +28,7 @@
 		success: function(result){
 		  if ($(result).find("course").length) {
 		    var html = $(result).find("course").text();
-		    $(obj).attr("data-content",html).attr("data-original-title",course).popover({html:true}).popover("show");
+			$(obj).unbind("click").popover({ trigger:'manual', content: html, html: true }).popover('show');
 		  } else {
 		    var html = "<p>Course information cannot be found. This course may " +
 			    "no longer be offered. If you believe there is an error or " +
@@ -56,14 +56,19 @@
 		    "department.</p>";
 		  }
 		  var parsedHtml = $.parseHTML( html );
+		  $(".sc_courselist").addClass("table").addClass("table-striped");
 		  $(parsedHtml).find("a").each(function(){
 		    var href = "https://catalog.uark.edu" + $(this).attr("href");
 		    $(this).attr("href", href);
 		  });
 		  $(".courseContent").append(parsedHtml);
-		  $(".bubblelink").popover({html:true});
+
 		}
 	      });
+						var ebt = setTimeout(function () {
+                   			clearTimeout(ebt);
+							$(".sc_courselist").addClass("table").addClass("table-striped");
+						}, 600);
 	    });
 
 	    $('html').on('click', function(e) {
